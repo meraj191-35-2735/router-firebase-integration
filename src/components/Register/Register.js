@@ -1,14 +1,20 @@
 import React from "react";
-import useFirebase from "../../hooks/useFirebase";
-import SignIn from "../../images/btn_google_signin_dark_focus_web.png";
 
-const LogIn = () => {
-  const { signInWithGoogle } = useFirebase();
+const Register = () => {
   return (
     <div>
       <div className="w-1/2 mx-auto pt-5 border-green-300 border py-3 px-3">
-        <h1 className="text-2xl font-bold">Please Log In!</h1>
+        <h1 className="text-2xl font-bold">Please Register!</h1>
         <form className="py-3">
+          <label className="font-bold">Your Name</label>
+          <br />
+          <input
+            className="border border-green-200 w-full my-2 pl-2"
+            type="text"
+            name=""
+            id=""
+            placeholder="Enter Name"
+          />
           <label className="font-bold">Your Email</label>
           <br />
           <input
@@ -30,15 +36,12 @@ const LogIn = () => {
           <input
             className="bg-green-300 px-3 rounded py-2"
             type="submit"
-            value="Log In"
+            value="Register"
           />
         </form>
-        <button onClick={signInWithGoogle}>
-          <img src={SignIn} alt="" />
-        </button>
       </div>
     </div>
   );
 };
 
-export default LogIn;
+export default Register;
