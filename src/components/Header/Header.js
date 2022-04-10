@@ -1,10 +1,14 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import useFirebase from "../../hooks/useFirebase";
+import { getAuth, signOut } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import app from "../../firebase.init";
+
+const auth = getAuth(app);
 
 const Header = () => {
-  const { user, signOutUser } = useFirebase();
+  const [user] = useAuthState(auth);
   return (
     <div>
       <nav className="flex justify-end py-3">
@@ -38,7 +42,7 @@ const Header = () => {
 
         {user?.uid ? (
           <Link
-            onClick={signOutUser}
+            onClick={() => signOut(auth)}
             className="mr-5 hover:text-orange-700 font-bold  font-serif"
             to="login"
           >
